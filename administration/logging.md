@@ -179,9 +179,34 @@ Additional log files can be defined in order to write specifics logs to a separa
 In order to define custom log patterns, log to network sockets and so on we can prepare a logging configuration in `log4j2.xml`.
 There are several things that you might want to change in the configuration:
 
-- The log level for a logger
-- The pattern of an appender
-- Redirect the log to a text file
+### The log level for a logger
+Example: To suppress *Item changed* log entries you could add custom log level definitions to the end of the `Loggers` section of the `log4j2.xml` config file like this:
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Configuration monitorInterval="10">
+  
+    [...]
+
+	<Loggers>
+    
+    [...]
+    
+		<!-- CUSTOM LOGGERS START HERE -->
+		<!--  -->
+		<!-- Suppress *Item changed* entries -->
+		<Logger level="ERROR" name="openhab.event.ItemStateChangedEvent"/>
+		<Logger level="ERROR" name="openhab.event.GroupItemStateChangedEvent"/>
+		<!--  -->
+		<!-- CUSTOM LOGGERS END HERE -->
+	</Loggers>
+
+</Configuration>
+```
+
+### The pattern of an appender
+Example: ?
+
+### Redirect the log to a text file
+Example: ? 
 
 ### Further Reading
 
